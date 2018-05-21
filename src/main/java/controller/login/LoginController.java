@@ -1,36 +1,35 @@
 package controller.login;
 
 import constant.Constant;
+import dao.UserDAO;
 import model.User;
-import model.Customer;
-import dao.*;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 
 public class LoginController extends HttpServlet {
-    private CustomerDAO dao;
+    private UserDAO dao;
 //    ObjectMapper mapper = new ObjectMapper();
 
     @Override
     public void init() throws ServletException {
-//        dao = CustomerDAO.getInstance();
-//        List<Customer> cust= dao.getAllCustomers();
+        dao = UserDAO.getInstance();
+        List<User> cust= dao.getAllUsers();
     }
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        super.doGet(req, resp);
-        RequestDispatcher view = req.getRequestDispatcher("/jsp/Login.jsp");
-        view.forward(req, resp);
+        resp.sendRedirect("./jsp/Login.jsp");
     }
 
     @Override
@@ -41,18 +40,17 @@ public class LoginController extends HttpServlet {
         String type = req.getParameter("type");
         if (isSuccess(username, password, type)) {
             HttpSession session = req.getSession();
-            User user = new User("", "", "", "", "", username, password, type);
+            User user = new User(1, "",  LocalDate.now(), "", "", username, password, type,"");
             session.setAttribute(Constant.SESSION_KEY_USER, user);
             RequestDispatcher view ;
             if(type.equals(Constant.TYPE_USER)){
-                //resp.sendRedirect("dashboard.html");
-                view=req.getRequestDispatcher("dashboard1.jsp");
+                view=req.getRequestDispatcher("./jsp/OrderDAO.jsp");
             }else{
-                view=req.getRequestDispatcher("dashboard2.jsp");
+                view=req.getRequestDispatcher("./jsp/Provider.jsp");
             }
             view.forward(req, resp);
         } else {
-            resp.sendRedirect("/jsp/Login.jsp");
+            resp.sendRedirect("./jsp/Login.jsp");
         }
     }
 

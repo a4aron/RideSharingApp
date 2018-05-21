@@ -1,15 +1,35 @@
 package model;
-
+import java.time.LocalDate;
 
 public class User {
 
-    private String id;
+    private int id;
+    private String name;
+    private LocalDate birthday;
+    private String address;
+    private String telNum;
+    private String userName;
+    private String passWord;
+    private String type;
+    private String comment;
 
-    public String getId() {
+    public User(int id, String name, LocalDate birthday, String address, String telNum, String userName, String passWord, String type, String comment) {
+        this.id = id;
+        this.name = name;
+        this.birthday = birthday;
+        this.address = address;
+        this.telNum = telNum;
+        this.userName = userName;
+        this.passWord = passWord;
+        this.type = type;
+        this.comment = comment;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -21,11 +41,11 @@ public class User {
         this.name = name;
     }
 
-    public String getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
@@ -69,25 +89,11 @@ public class User {
         this.type = type;
     }
 
-    private String name;
-    private String birthday;
-    private String address;
-    private String telNum;
-    private String userName;
-    private String passWord;
-    private String type;
-
-    public User(String id, String name, String birthday, String address, String telNum, String userName, String passWord, String type) {
-        this.id = id;
-        this.name = name;
-        this.birthday = birthday;
-        this.address = address;
-        this.telNum = telNum;
-        this.userName = userName;
-        this.passWord = passWord;
-        this.type = type;
+    public String getComment() {
+        return comment;
     }
 
-
-
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 }

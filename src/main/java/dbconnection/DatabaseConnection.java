@@ -7,7 +7,7 @@ import java.util.List;
 public class DatabaseConnection {
     public static final String SERVER_NAME = "localhost";
     public static final int PORT = 3306;
-    public static final String DATABASE = "video_rental_system";
+    public static final String DATABASE = "ridesharing";
     public static final String USERNAME = "root";
     public static final String PASSWORD = "";
 
