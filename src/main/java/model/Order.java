@@ -2,6 +2,29 @@ package model;
 
 public class Order {
 
+    private String id;
+//    private String requesterId;
+//    private String providerId;
+    private String date;
+    private String departure;
+    private String destination;
+    private String comment;
+    private boolean confirmed;
+    private boolean active;
+    private User requestorUser;
+    private User providerUser;
+
+    public Order(String id, String date, String departure, String destination, String comment, boolean confirmed, boolean active, User requestorUser, User providerUser) {
+        this.id = id;
+        this.date = date;
+        this.departure = departure;
+        this.destination = destination;
+        this.comment = comment;
+        this.confirmed = confirmed;
+        this.active = active;
+        this.requestorUser = requestorUser;
+        this.providerUser = providerUser;
+    }
 
     public String getId() {
         return id;
@@ -9,22 +32,6 @@ public class Order {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getRequesterId() {
-        return requesterId;
-    }
-
-    public void setRequesterId(String requesterId) {
-        this.requesterId = requesterId;
-    }
-
-    public String getProviderId() {
-        return providerId;
-    }
-
-    public void setProviderId(String providerId) {
-        this.providerId = providerId;
     }
 
     public String getDate() {
@@ -51,29 +58,43 @@ public class Order {
         this.destination = destination;
     }
 
-    public boolean isComfirmed() {
-        return comfirmed;
+    public String getComment() {
+        return comment;
     }
 
-    public void setComfirmed(boolean comfirmed) {
-        this.comfirmed = comfirmed;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
-    private String id;
-    private String requesterId;
-    private String providerId;
-    private String date;
-    private String departure;
-    private String destination;
-    private boolean comfirmed;
+    public boolean isConfirmed() {
+        return confirmed;
+    }
 
-    public Order(String id, String requesterId, String providerId, String date, String departure, String destination, boolean comfirmed) {
-        this.id = id;
-        this.requesterId = requesterId;
-        this.providerId = providerId;
-        this.date = date;
-        this.departure = departure;
-        this.destination = destination;
-        this.comfirmed = comfirmed;
+    public void setConfirmed(boolean confirmed) {
+        this.confirmed = confirmed;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public User getRequestorUser() {
+        return requestorUser;
+    }
+
+    public void setRequestorUser(User requestorUser) {
+        this.requestorUser = requestorUser;
+    }
+
+    public User getProviderUser() {
+        return providerUser;
+    }
+
+    public void setProviderUser(User providerUser) {
+        this.providerUser = providerUser;
     }
 }
