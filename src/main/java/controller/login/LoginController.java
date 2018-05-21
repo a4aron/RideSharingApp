@@ -21,8 +21,8 @@ public class LoginController extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        dao = CustomerDAO.getInstance();
-        List<Customer> cust= dao.getAllCustomers();
+//        dao = CustomerDAO.getInstance();
+//        List<Customer> cust= dao.getAllCustomers();
     }
 
 
@@ -45,13 +45,14 @@ public class LoginController extends HttpServlet {
             session.setAttribute(Constant.SESSION_KEY_USER, user);
             RequestDispatcher view ;
             if(type.equals(Constant.TYPE_USER)){
-                view=req.getRequestDispatcher("./jsp/Order.jsp");
+                //resp.sendRedirect("dashboard.html");
+                view=req.getRequestDispatcher("dashboard1.jsp");
             }else{
-                view=req.getRequestDispatcher("./jsp/Provider.jsp");
+                view=req.getRequestDispatcher("dashboard2.jsp");
             }
             view.forward(req, resp);
         } else {
-            resp.sendRedirect("./jsp/Login.jsp");
+            resp.sendRedirect("/jsp/Login.jsp");
         }
     }
 
